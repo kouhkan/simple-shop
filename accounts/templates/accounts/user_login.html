@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<hr>
+	<h3>Login form</h3>
+<form action="" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="login">
+</form>
+
+	<a href="{% url 'accounts:user_forget' %}">Forget</a>
+{% endblock %}

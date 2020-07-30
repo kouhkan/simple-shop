@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+  {% for cat in categories %}
+
+  <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+
+      {% for sub in cat.subcat.all %}
+        <a href="{{sub.get_absolute_url}}">{{sub.name}}</a>
+      {% endfor %}
+  {% endfor %}
+  <br><br><br>
+
+  {% for product in products %}
+    <div style="width: 18rem; display: inline-block;">
+      {% thumbnail product.image "300x300" as im %}
+      <img src="{{ im.url }}" alt="Card image cap">
+      {% endthumbnail %}
+      <div>
+        <h5>{{product.name}}</h5>
+
+        <a href="{{product.get_absolute_url}}">See Detail</a>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}
